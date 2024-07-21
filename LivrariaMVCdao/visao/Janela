@@ -1,0 +1,176 @@
+package visao;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.JButton;
+
+public class Janela extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField fieldISBN;
+	private JTextField fieldTitulo;
+	private JTextField fieldAutor;
+	private JButton buttonCad;
+	private JButton buttonCon;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Janela frame = new Janela();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Janela() {
+		setTitle("Livraria InfoBio");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 557, 230);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel1 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel1.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		contentPane.add(panel1, BorderLayout.NORTH);
+		
+		JLabel labelTitulo = new JLabel("TELA DE GERENCIAMENTO DE LIVROS");
+		labelTitulo.setFont(new Font("Tahoma", Font.BOLD, 18));
+		panel1.add(labelTitulo);
+		
+		JPanel panel2 = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) panel2.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.LEFT);
+		contentPane.add(panel2, BorderLayout.CENTER);
+		
+		JLabel labelISBN = new JLabel("ISBN");
+		labelISBN.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		panel2.add(labelISBN);
+		
+		fieldISBN = new JTextField();
+		fieldISBN.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel2.add(fieldISBN);
+		fieldISBN.setColumns(10);
+		
+		JLabel labelTituloLivro = new JLabel("T\u00EDtulo");
+		labelTituloLivro.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel2.add(labelTituloLivro);
+		
+		fieldTitulo = new JTextField();
+		fieldTitulo.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel2.add(fieldTitulo);
+		fieldTitulo.setColumns(31);
+		
+		JLabel labelAutor = new JLabel("Autor");
+		labelAutor.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel2.add(labelAutor);
+		
+		fieldAutor = new JTextField();
+		fieldAutor.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel2.add(fieldAutor);
+		fieldAutor.setColumns(46);
+		
+		JPanel panel3 = new JPanel();
+		FlowLayout flowLayout_2 = (FlowLayout) panel3.getLayout();
+		flowLayout_2.setAlignment(FlowLayout.LEFT);
+		contentPane.add(panel3, BorderLayout.SOUTH);
+		
+		buttonCad = new JButton("Cadastrar");
+		buttonCad.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel3.add(buttonCad);
+		
+		buttonCon = new JButton("Consultar");
+		buttonCon.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel3.add(buttonCon);
+	}
+
+	public JTextField getFieldISBN() {
+		return fieldISBN;
+	}
+
+	public void setFieldISBN(JTextField fieldISBN) {
+		this.fieldISBN = fieldISBN;
+	}
+
+	public JTextField getFieldTitulo() {
+		return fieldTitulo;
+	}
+
+	public void setFieldTitulo(JTextField fieldTitulo) {
+		this.fieldTitulo = fieldTitulo;
+	}
+
+	public JTextField getFieldAutor() {
+		return fieldAutor;
+	}
+
+	public void setFieldAutor(JTextField fieldAutor) {
+		this.fieldAutor = fieldAutor;
+	}
+
+	public JButton getButtonCad() {
+		return buttonCad;
+	}
+
+	public void setButtonCad(JButton buttonCad) {
+		this.buttonCad = buttonCad;
+	}
+
+	public JButton getButtonCon() {
+		return buttonCon;
+	}
+
+	public void setButtonCon(JButton buttonCon) {
+		this.buttonCon = buttonCon;
+	}
+	
+	public void limpaTela()
+	{
+		fieldAutor.setText("");
+		fieldTitulo.setText("");
+		fieldISBN.setText("");
+	}
+	
+	
+
+}
