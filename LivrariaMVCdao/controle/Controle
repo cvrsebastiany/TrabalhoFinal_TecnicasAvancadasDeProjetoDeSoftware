@@ -1,0 +1,83 @@
+package controle;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import dao.LivroDAO;
+import modelo.Livro;
+import visao.Janela;
+
+public class Controle implements ActionListener {
+	
+	private Janela jan;
+	private Livro liv;
+	private LivroDAO lidao;
+	
+	public Controle(Janela jan, Livro liv)
+	{
+		this.jan=jan;
+		this.liv=liv;
+		this.lidao= new LivroDAO();
+		registraListenersAcao();
+	}
+	
+	public void registraListenersAcao()
+	{
+		jan.getButtonCad().addActionListener(this);
+		jan.getButtonCon().addActionListener(this);
+	}
+	
+	public void cadastraLivro()
+	{
+		String isbn= jan.getFieldISBN().getText();
+		String titulo= jan.getFieldTitulo().getText();
+		String autor= jan.getFieldAutor().getText();
+		liv.setAutor(autor);
+		liv.setISBN(isbn);
+		liv.setTitulo(titulo);
+		
+		if(lidao.cadastraLivro(liv))
+		{
+			System.out.println("Dados gravados com sucesso!");
+			jan.limpaTela();	
+		}
+				
+		else
+			System.out.println("Problemas na gravação dos dados");
+		
+	}
+	
+	public void consultaLivro()
+	{
+		String isbn=jan.getFieldISBN().getText();
+		liv.setISBN(isbn);
+		
+		if(lidao.consultaLivro(liv))
+		{
+			jan.getFieldAutor().setText(liv.getAutor());
+			jan.getFieldTitulo().setText(liv.getTitulo());
+		}
+		else
+		{
+			System.out.println("Livro não encontrado!");
+		}
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getActionCommand().equals("Cadastrar"))
+		{
+			cadastraLivro();
+		}
+		
+		else if(e.getActionCommand().equals("Consultar"))
+		{
+			consultaLivro();
+		}
+		
+	}
+
+}
