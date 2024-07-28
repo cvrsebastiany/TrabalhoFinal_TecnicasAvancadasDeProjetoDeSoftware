@@ -1,16 +1,16 @@
 package controle;
 
 import modelo.Livro;
-import visao.Janela;
+import visao.JanelaGerenciamento;
 
 public class ProgramaPrincipal {
 	
 	public static void main(String[] args) {
 		
-		Janela j= new Janela();
+		JanelaGerenciamento j= new JanelaGerenciamento();
 		j.setVisible(true);
 		Livro liv= new Livro();
-		Controle livCon= new Controle(j, liv);
+		CtrlLivro CtrlLiv= new CtrlLivro(j, liv);
 	}
 
 }
