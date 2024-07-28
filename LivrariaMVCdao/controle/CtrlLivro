@@ -1,0 +1,81 @@
+package controle;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import dao.DAOLivro;
+import modelo.Livro;
+import visao.JanelaGerenciamento;
+
+public class CtrlLivro implements ActionListener {
+	
+	private JanelaGerenciamento janGer;
+	private Livro liv;
+	private DAOLivro daolivro;
+	
+	public CtrlLivro(JanelaGerenciamento janGer, Livro liv)
+	{
+		this.janGer=janGer;
+		this.liv=liv;
+		this.daolivro= new DAOLivro();
+		registraListenersAcao();
+	}
+	
+	public void cadastrarLivro()
+	{
+		String isbn= janGer.getFieldISBN().getText();
+		String titulo= janGer.getFieldTitulo().getText();
+		String autor= janGer.getFieldAutor().getText();
+		liv.setAutor(autor);
+		liv.setISBN(isbn);
+		liv.setTitulo(titulo);
+		
+		if(daolivro.cadastrarLivro(liv))
+		{
+			System.out.println("Dados gravados com sucesso!");
+			janGer.limparTela();	
+		}
+				
+		else
+			System.out.println("Problemas na gravação dos dados");
+	}
+	
+	public void consultarLivro()
+	{
+		String isbn=janGer.getFieldISBN().getText();
+		liv.setISBN(isbn);
+		
+		if(daolivro.consultarLivro(liv))
+		{
+			janGer.getFieldAutor().setText(liv.getAutor());
+			janGer.getFieldTitulo().setText(liv.getTitulo());
+		}
+		else
+		{
+			System.out.println("Livro não encontrado!");
+		}
+	}
+
+
+	public void registrarListenersAcao()
+	{
+		janGer.getBtnCadastrar().addActionListener(this);
+		janGer.getBtnConsultar().addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getActionCommand().equals("Cadastrar"))
+		{
+			cadastrarLivro();
+		}
+		
+		else if(e.getActionCommand().equals("Consultar"))
+		{
+			consultarLivro();
+		}
+		
+	}
+
+}
