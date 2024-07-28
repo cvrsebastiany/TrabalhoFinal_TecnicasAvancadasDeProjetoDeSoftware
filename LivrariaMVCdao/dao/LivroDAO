@@ -19,7 +19,7 @@ public class LivroDAO {
 		arq= new File("livros.txt");
 	}
 	
-	public boolean cadastraLivro(Livro li)
+	public boolean cadastrarLivro(Livro li)
 	{
 		FileWriter fw = null;
 		BufferedWriter bw=null;
@@ -51,7 +51,7 @@ public class LivroDAO {
 		return true;
 	}
 	
-	public boolean consultaLivro(Livro li)
+	public boolean consultarLivro(Livro li)
 	{
 		boolean resp= false;
 		
