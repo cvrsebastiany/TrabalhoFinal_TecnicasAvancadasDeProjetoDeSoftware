@@ -14,15 +14,15 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JButton;
 
-public class Janela extends JFrame {
+public class JanelaGerenciamento extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField fieldISBN;
 	private JTextField fieldTitulo;
 	private JTextField fieldAutor;
-	private JButton buttonCad;
-	private JButton buttonCon;
+	private JButton btnCadastrar;
+	private JButton btnConsultar;
 
 	/**
 	 * Launch the application.
@@ -31,7 +31,8 @@ public class Janela extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Janela frame = new Janela();
+					JanelaGerenciamento frame = new Janela();
+					frame.setResizable(false);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,10 +44,10 @@ public class Janela extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Janela() {
+	public JanelaGerenciamento() {
 		setTitle("Livraria InfoBio");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 557, 230);
+		setBounds(100, 100, 960, 230);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -92,8 +93,8 @@ public class Janela extends JFrame {
 		panel2.add(fieldISBN);
 		fieldISBN.setColumns(10);
 		
-		JLabel labelTituloLivro = new JLabel("T\u00EDtulo");
-		labelTituloLivro.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		JLabel labelTituloLivro = new JLabel("Título");
+		labelTituloLivro.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel2.add(labelTituloLivro);
 		
 		fieldTitulo = new JTextField();
@@ -102,7 +103,7 @@ public class Janela extends JFrame {
 		fieldTitulo.setColumns(31);
 		
 		JLabel labelAutor = new JLabel("Autor");
-		labelAutor.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		labelAutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel2.add(labelAutor);
 		
 		fieldAutor = new JTextField();
@@ -115,13 +116,13 @@ public class Janela extends JFrame {
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		contentPane.add(panel3, BorderLayout.SOUTH);
 		
-		buttonCad = new JButton("Cadastrar");
-		buttonCad.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		panel3.add(buttonCad);
+		btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel3.add(btnCadastrar);
 		
-		buttonCon = new JButton("Consultar");
-		buttonCon.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		panel3.add(buttonCon);
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel3.add(btnConsultar);
 	}
 
 	public JTextField getFieldISBN() {
@@ -148,23 +149,23 @@ public class Janela extends JFrame {
 		this.fieldAutor = fieldAutor;
 	}
 
-	public JButton getButtonCad() {
-		return buttonCad;
+	public JButton getBtnCadastrar() {
+		return btnCadastrar;
 	}
 
-	public void setButtonCad(JButton buttonCad) {
-		this.buttonCad = buttonCad;
+	public void setBtnCadastrar(JButton btnCadastrar) {
+		this.btnCadastrar = btnCadastrar;
 	}
 
-	public JButton getButtonCon() {
-		return buttonCon;
+	public JButton getBtnConsultar() {
+		return btnConsultar;
 	}
 
-	public void setButtonCon(JButton buttonCon) {
-		this.buttonCon = buttonCon;
+	public void setBtnConsultar(JButton btnConsultar) {
+		this.btnConsultar = btnConsultar;
 	}
 	
-	public void limpaTela()
+	public void limparTela()
 	{
 		fieldAutor.setText("");
 		fieldTitulo.setText("");
