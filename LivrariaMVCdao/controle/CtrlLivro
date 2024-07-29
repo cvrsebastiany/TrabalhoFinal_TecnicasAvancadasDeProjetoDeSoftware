@@ -4,7 +4,7 @@ import dao.DAOLivro;
 import modelo.Livro;
 import visao.JanelaGerenciamento;
 
-public class CtrlLivro implements ActionListener {
+public class CtrlLivro {
 	
 	private JanelaGerenciamento janGer;
 	private Livro liv;
