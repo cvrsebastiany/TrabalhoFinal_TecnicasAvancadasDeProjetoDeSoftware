@@ -1,0 +1,47 @@
+package controle;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import dao.DAOLivro;
+import modelo.Livro;
+import visao.JanelaGerenciamento;
+
+public class FacadeControle implements ActionListener {
+	
+	private JanelaGerenciamento janGer;
+	private Livro liv;
+	private DAOLivro daolivro;
+	private CtrlLivro ctrlLiv;
+	
+	public FacadeControle(JanelaGerenciamento janGer, Livro liv)
+	{
+		this.janGer=janGer;
+		this.liv=liv;
+		this.daolivro= new DAOLivro();
+		this.ctrlLiv = new CtrlLivro(janGer, liv);
+		registrarListenersAcao();
+	}
+	
+	public void registrarListenersAcao()
+	{
+		janGer.getBtnCadastrar().addActionListener(this);
+		janGer.getBtnConsultar().addActionListener(this);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getActionCommand().equals("Cadastrar"))
+		{
+			ctrlLiv.cadastrarLivro();
+		}
+		
+		else if(e.getActionCommand().equals("Consultar"))
+		{
+			ctrlLiv.consultarLivro();
+		}
+		
+	}
+
+}
