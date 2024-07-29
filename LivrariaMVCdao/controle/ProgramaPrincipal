@@ -10,7 +10,7 @@ public class ProgramaPrincipal {
 		JanelaGerenciamento j= new JanelaGerenciamento();
 		j.setVisible(true);
 		Livro liv= new Livro();
-		CtrlLivro CtrlLiv= new CtrlLivro(j, liv);
+		FacadeControle FacCtrl = new FacadeControle(j, liv);
 	}
 
 }
